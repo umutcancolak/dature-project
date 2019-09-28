@@ -10,13 +10,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'umut'
 api = Api(app)
 
-""
+
 @app.before_first_request
 def create_tables():
     db.create_all()
     
-
-
 
 class Home(Resource):
     def get(self):
@@ -35,9 +33,8 @@ api.add_resource(SensorRegister, "/sensor")
 # will automatically reload for code changes 
 # and show a debugger in case an exception happened.
 if __name__ == "__main__":
-    from db import db,Database
+    from db import db
     db.init_app(app)
-    Database.initialize()
     app.run(port=5000, debug=True) 
 
 
