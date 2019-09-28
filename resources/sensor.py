@@ -1,6 +1,7 @@
-from flask_restful import Resource, reqparse 
-from models.sensor import Sensor
-from db import mongo_db
+from flask import jsonify
+from flask_restful import Resource, reqparse
+from models.sensor import SensorModel
+from db import Database
 
 parser = reqparse.RequestParser()
 parser.add_argument("sensor_id",
@@ -20,9 +21,7 @@ parser.add_argument("temperature",
 )
 
 class SensorRegister(Resource):
-
+    
     def get(self):
-        mongo_db.find("sensor_trial",{})
-        
-
+        return jsonify({"Sensor Values": SensorModel.get_all()})
         

@@ -15,7 +15,7 @@ class Database(object):
 
     @staticmethod
     def find(collection, query):
-        return Database.DATABASE[collection].find(query)
+        return Database.DATABASE[collection].find(query,{"_id":0})
 
     @staticmethod
     def find_one(collection, query):

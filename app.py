@@ -33,8 +33,9 @@ api.add_resource(SensorRegister, "/sensor")
 # will automatically reload for code changes 
 # and show a debugger in case an exception happened.
 if __name__ == "__main__":
-    from db import db
+    from db import db, Database
     db.init_app(app)
+    Database.initialize()
     app.run(port=5000, debug=True) 
 
 
